@@ -1,20 +1,41 @@
 import turtle
+import time
 
 screen = turtle.Screen()
 screen.setup(width=1200, height=750)
 screen.bgcolor("black")
 screen.title("My Snake 😁")
 
+starting_position = [(0,0) ,(-20,0), (-40,0)]
 
-snake1 = turtle.Turtle("square")
-snake1.color("white")
+snakes = []
 
-snake2 = turtle.Turtle("square")
-snake2.color("white")
-snake2.goto(-20,0)
+for position in starting_position:
+    snake = turtle.Turtle("square")
+    snake.penup()
+    snake.color("white")
+    snake.goto(position)
 
-snake3 = turtle.Turtle("square")
-snake3.color("white")
-snake3.goto(-40,0)
+
+game_is_on = True
+while game_is_on:
+    screen.update()
+    time.sleep(0.1)
+    for snake in snakes:
+        snake.forward(20)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 screen.exitonclick()
