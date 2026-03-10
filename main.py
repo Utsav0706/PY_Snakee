@@ -15,14 +15,21 @@ for position in starting_position:
     snake.penup()
     snake.color("white")
     snake.goto(position)
+    snakes.append(snake)
 
 
 game_is_on = True
 while game_is_on:
     screen.update()
     time.sleep(0.1)
-    for snake in snakes:
-        snake.forward(20)
+
+    for snake_num in range(len(snakes) - 1, 0, -1):
+        newX = snakes[snake_num-1].xcor()
+        newY = snakes[snake_num-1].ycor()
+
+        snakes[snake_num].goto(newX, newY)
+
+    snakes[0].forward(20)
 
 
 
