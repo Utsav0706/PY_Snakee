@@ -30,10 +30,16 @@ while game_is_on:
     if snake.head.distance(food) < 15:
         food.refresh()
         scoreboard.increase_score()
+        snake.extend()
 
-    if snake.head.xcor() > 580 or snake.head.xcor() < -580 or snake.head.ycor() > 300 or snake.head.ycor() < -300:
+    if snake.head.xcor() > 580 or snake.head.xcor() < -580 or snake.head.ycor() > 360 or snake.head.ycor() < -360:
         game_is_on = False
         scoreboard.game_over()
+
+    for seg in snake.snakes[1:]:
+        if snake.head.distance(seg) < 10:
+            game_is_on = False
+            scoreboard.game_over()
 
 
 
